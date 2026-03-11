@@ -21,9 +21,11 @@
             <div class="container">
                 <a class="navbar-brand fw-bold text-gradient" href="#home" data-i18n="brand">Bernard Junior Beya</a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <button class="navbar-toggler" type="button" data-nav-toggle aria-controls="mainNav"
+                    aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
 
                 <div class="collapse navbar-collapse" id="mainNav">
                     <ul class="navbar-nav mx-auto gap-lg-3">
@@ -54,7 +56,7 @@
 
     <main>
         <section class="hero-wrap section" id="home">
-            <div class="container text-center">
+            <div class="container text-center" data-animate>
                 <span class="pill" data-i18n="hero-badge">Disponible pour de nouvelles opportunités</span>
                 <h1 class="display-2 fw-bold mt-3 mb-3 text-gradient" data-i18n="hero.title">
                     Développeur Full‑Stack & Entrepreneur Tech
@@ -81,7 +83,7 @@
 
         <section id="about" class="section">
             <div class="container">
-                <div class="section-head">
+                <div class="section-head" data-animate>
                     <span class="eyebrow" data-i18n="about.eyebrow">À propos</span>
                     <h2 class="section-title" data-i18n="about.title">Construire le futur, un produit à la fois</h2>
                     <p class="section-subtitle" data-i18n="about.subtitle">
@@ -89,7 +91,7 @@
                     </p>
                 </div>
 
-                <div class="row g-4 align-items-center">
+                <div class="row g-4 align-items-center" data-animate>
                     <div class="col-lg-6">
                         <div class="about-photo">
                             <span class="about-badge" data-i18n="about.badge">Disponible pour missions</span>
@@ -139,7 +141,7 @@
 
         <section id="skills" class="section">
             <div class="container">
-                <div class="section-head text-center">
+                <div class="section-head text-center" data-animate>
                     <span class="eyebrow" data-i18n="skills.eyebrow">Compétences & expertise</span>
                     <h2 class="section-title" data-i18n="skills.title">Stack technique</h2>
                     <p class="section-subtitle" data-i18n="skills.subtitle">
@@ -147,7 +149,7 @@
                     </p>
                 </div>
 
-                <div class="row g-4">
+                <div class="row g-4" data-animate>
                     <div class="col-md-6 col-lg-3">
                         <div class="skill-card">
                             <div class="skill-icon"><i class="bi bi-code-slash"></i></div>
@@ -167,7 +169,7 @@
                             </div>
                             <div class="skill-item">
                                 <span class="skill-label">TypeScript</span>
-                                <div class="skill-bar"><span style="width: 88%"></span></div>
+                                <div class="skill-bar"><span style="width: 63%"></span></div>
                             </div>
                         </div>
                     </div>
@@ -249,11 +251,11 @@
                     <p class="small text-muted" data-i18n="skills.also">Également expérimenté avec</p>
                     <div class="d-flex flex-wrap justify-content-center gap-2">
                         <span class="tag-pill">Python</span>
-                        <span class="tag-pill">Java</span>
-                        <span class="tag-pill">Kubernetes</span>
+                        <span class="tag-pill">JavaScript</span>
+                        <span class="tag-pill">PHP</span>
                         <span class="tag-pill">Terraform</span>
                         <span class="tag-pill">Figma</span>
-                        <span class="tag-pill">Stripe API</span>
+                        <span class="tag-pill">Rest API</span>
                         <span class="tag-pill">WebSockets</span>
                         <span class="tag-pill">Microservices</span>
                     </div>
@@ -263,7 +265,7 @@
 
         <section id="projects" class="section">
             <div class="container">
-                <div class="section-head text-center">
+                <div class="section-head text-center" data-animate>
                     <span class="eyebrow" data-i18n="projects.eyebrow">Portfolio</span>
                     <h2 class="section-title" data-i18n="projects.title">Projets en vedette</h2>
                     <p class="section-subtitle" data-i18n="projects.subtitle">
@@ -272,15 +274,15 @@
                     </p>
                 </div>
 
-                <div class="row g-4">
+                <div class="row g-4" data-animate>
                     <div class="col-md-6 col-lg-4">
                         <article class="project-card">
                             <div class="project-media media-orange"></div>
                             <div class="project-body">
-                                <h3 class="h6 fw-semibold" data-i18n="projects.p1.title">Plateforme d’Analyse Entreprise
+                                <h3 class="h6 fw-semibold" data-i18n="projects.p1.title">Plateforme E-school
                                 </h3>
                                 <p class="small text-muted" data-i18n="projects.p1.desc">
-                                    Plateforme SaaS d’analyse avec data en temps réel, reporting et collaboration.
+                                    Plateforme SaaS d'e-school avec data et collaboration en temps-REAL.
                                 </p>
                                 <div class="d-flex flex-wrap gap-2 mb-3">
                                     <span class="tag-mini">React</span>
@@ -289,8 +291,8 @@
                                     <span class="tag-mini">Redis</span>
                                 </div>
                                 <div class="d-flex gap-2">
-                                    <a class="btn btn-sm btn-outline-brand" href="#" data-i18n="projects.live">Démo en
-                                        direct</a>
+                                    <a class="btn btn-sm btn-outline-brand" href="#" data-i18n="projects.live">En
+                                        developpement 80%</a>
                                     <a class="btn btn-sm btn-ghost" href="#" data-i18n="projects.code">Code</a>
                                 </div>
                             </div>
@@ -301,9 +303,10 @@
                         <article class="project-card">
                             <div class="project-media media-dark"></div>
                             <div class="project-body">
-                                <h3 class="h6 fw-semibold" data-i18n="projects.p2.title">Générateur de Contenu IA</h3>
+                                <h3 class="h6 fw-semibold" data-i18n="projects.p2.title">Plateforme annuare electronique
+                                </h3>
                                 <p class="small text-muted" data-i18n="projects.p2.desc">
-                                    SaaS utilisant l’IA pour générer du contenu marketing multilingue et SEO‑friendly.
+                                    Faire des annonces, promouver des produits et vendre des services en ligne.
                                 </p>
                                 <div class="d-flex flex-wrap gap-2 mb-3">
                                     <span class="tag-mini">Next.js</span>
@@ -345,7 +348,7 @@
                     </div>
                 </div>
 
-                <div class="text-center mt-4">
+                <div class="text-center mt-4" data-animate>
                     <a class="btn btn-outline-brand" href="#" data-i18n="projects.viewAll">Voir tous les projets</a>
                 </div>
             </div>
@@ -353,7 +356,7 @@
 
         <section id="startup" class="section">
             <div class="container">
-                <div class="section-head text-center">
+                <div class="section-head text-center" data-animate>
                     <span class="eyebrow" data-i18n="startup.eyebrow">Entrepreneuriat</span>
                     <h2 class="section-title" data-i18n="startup.title">Ventures startup</h2>
                     <p class="section-subtitle" data-i18n="startup.subtitle">
@@ -687,31 +690,39 @@
                                 <i class="bi bi-envelope"></i>
                                 <div>
                                     <div class="small text-muted" data-i18n="contact.infoEmail">Email</div>
-                                    <div>juniorbernardbeya@faber-groupe.com</div>
+                                    <div><a href="mailto:juniorbernardbeya@faber-groupe.com" target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="contact-link">juniorbernardbeya@faber-groupe.com</a></div>
                                 </div>
                             </div>
 
                             <div class="info-item">
-                                <i class="bi bi-geo-alt"></i>
+                                <i class="bi bi-whatsapp"></i>
                                 <div>
-                                    <div class="small text-muted" data-i18n="contact.infoLocation">Localisation</div>
-                                    <div>Kinshasa, Kinshasa/RDC</div>
+                                    <div class="small text-muted" data-i18n="contact.whatsapp">WhatsApp</div>
+                                    <div><a href="https://wa.me/243821067566?text=Hello%20I%20saw%20your%20portfolio"
+                                            target="_blank" rel="noopener noreferrer" class="contact-link">+243 821 067
+                                            566</a></div>
                                 </div>
                             </div>
 
                             <div class="info-item">
                                 <i class="bi bi-linkedin"></i>
                                 <div>
-                                    <div class="small text-muted">LinkedIn</div>
-                                    <div>/in/developer</div>
+                                    <div class="small text-muted" data-i18n="contact.linkedin">LinkedIn</div>
+                                    <div><a href="https://linkedin.com/in/bernard-junior-beya-410282247" target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="contact-link">linkedin.com/in/bernard-junior-beya</a>
+                                    </div>
                                 </div>
                             </div>
-
                             <div class="info-item">
                                 <i class="bi bi-github"></i>
                                 <div>
-                                    <div class="small text-muted">GitHub</div>
-                                    <div>@developer</div>
+                                    <div class="small text-muted" data-i18n="contact.github">GitHub</div>
+                                    <div><a href="https://github.com/juniorbernard" target="_blank"
+                                            rel="noopener noreferrer" class="contact-link">github.com/juniorbernard</a>
+                                    </div>
                                 </div>
                             </div>
 
@@ -730,45 +741,49 @@
 
 
         <footer class="footer">
-  <div class="container">
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="fw-semibold text-gradient" data-i18n="brand">Beya Bernard-Junior</div>
-        <p class="small text-muted mt-2" data-i18n="footer.tagline">
-          Développeur full‑stack & entrepreneur tech.
-        </p>
-        <div class="d-flex gap-2 mt-3">
-          <a class="icon-circle small" href="#" aria-label="GitHub"><i class="bi bi-github"></i></a>
-          <a class="icon-circle small" href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-          <a class="icon-circle small" href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
-          <a class="icon-circle small" href="#" aria-label="whatsapp"><i class="bi bi-whatsapp"></i></a>
-        </div>
-      </div>
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="fw-semibold text-gradient" data-i18n="brand">Beya Bernard-Junior</div>
+                        <p class="small text-muted mt-2" data-i18n="footer.tagline">
+                            Développeur full‑stack & entrepreneur tech.
+                        </p>
+                        <div class="d-flex gap-2 mt-3">
+                            <a class="icon-circle small" href="#" aria-label="GitHub"><i class="bi bi-github"></i></a>
+                            <a class="icon-circle small" href="#" aria-label="LinkedIn"><i
+                                    class="bi bi-linkedin"></i></a>
+                            <a class="icon-circle small" href="#" aria-label="Twitter"><i
+                                    class="bi bi-twitter-x"></i></a>
+                            <a class="icon-circle small" href="#" aria-label="whatsapp"><i
+                                    class="bi bi-whatsapp"></i></a>
+                        </div>
+                    </div>
 
-      <div class="col-md-4">
-        <h4 class="h6 fw-semibold" data-i18n="footer.linksTitle">Liens rapides</h4>
-        <ul class="footer-links">
-          <li><a href="#about" data-i18n="nav.about">À propos</a></li>
-          <li><a href="#skills" data-i18n="nav.skills">Compétences</a></li>
-          <li><a href="#projects" data-i18n="nav.projects">Projets</a></li>
-          <li><a href="#services" data-i18n="nav.services">Services</a></li>
-          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
-        </ul>
-      </div>
+                    <div class="col-md-4">
+                        <h4 class="h6 fw-semibold" data-i18n="footer.linksTitle">Liens rapides</h4>
+                        <ul class="footer-links">
+                            <li><a href="#about" data-i18n="nav.about">À propos</a></li>
+                            <li><a href="#skills" data-i18n="nav.skills">Compétences</a></li>
+                            <li><a href="#projects" data-i18n="nav.projects">Projets</a></li>
+                            <li><a href="#services" data-i18n="nav.services">Services</a></li>
+                            <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+                        </ul>
+                    </div>
 
-      <div class="col-md-4">
-        <h4 class="h6 fw-semibold" data-i18n="footer.connectTitle">Connecter</h4>
-        <p class="small text-muted mb-1">juniorbernardbeya@faber-groupe.com</p>
-        <p class="small text-muted mb-0">Kinshasa, Kinshasa/RDC</p>
-      </div>
-    </div>
+                    <div class="col-md-4">
+                        <h4 class="h6 fw-semibold" data-i18n="footer.connectTitle">Connecter</h4>
+                        <p class="small text-muted mb-1">juniorbernardbeya@faber-groupe.com</p>
+                        <p class="small text-muted mb-0">Kinshasa, Kinshasa/RDC</p>
+                    </div>
+                </div>
 
-    <div class="footer-bottom mt-4 pt-3">
-      <span class="small text-muted" data-i18n="footer.copy">© 2026 Beya Bernard-Junior. Tous droits réservés.</span>
-      <span class="small text-muted" data-i18n="footer.made">Fait avec passion et beaucoup de café.</span>
-    </div>
-  </div>
-</footer>
+                <div class="footer-bottom mt-4 pt-3">
+                    <span class="small text-muted" data-i18n="footer.copy">© 2026 Beya Bernard-Junior. Tous droits
+                        réservés.</span>
+                    <span class="small text-muted" data-i18n="footer.made">Fait avec passion et beaucoup de café.</span>
+                </div>
+            </div>
+        </footer>
 
     </main>
 

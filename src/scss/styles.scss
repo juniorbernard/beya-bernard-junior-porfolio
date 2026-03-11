@@ -30,6 +30,27 @@ body {
   font-family: "Manrope", sans-serif;
 }
 
+/* Bootstrap text utilities override for dark mode */
+.text-muted { color: var(--muted) !important; }
+.text-dark { color: var(--text) !important; }
+
+/* Nav + form text fixes */
+.navbar .nav-link,
+.navbar .navbar-brand,
+.form-label {
+  color: var(--text);
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+  color: var(--brand);
+}
+
+.form-control,
+.form-control::placeholder {
+  color: var(--text);
+}
+
 .nav-glass {
   position: sticky;
   top: 0;
@@ -37,6 +58,15 @@ body {
   backdrop-filter: blur(12px);
   background: color-mix(in srgb, var(--bg) 80%, transparent);
   border-bottom: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
+}
+
+.navbar {
+  position: relative;
+}
+
+.navbar-toggler {
+  position: relative;
+  z-index: 1010;
 }
 
 .hero-wrap {
@@ -112,9 +142,10 @@ body {
   border-radius: 22px;
   min-height: 360px;
   background:
-    radial-gradient(260px 160px at 20% 20%, rgba(139, 49, 255, 0.35), transparent),
-    radial-gradient(260px 160px at 80% 80%, rgba(255, 75, 178, 0.35), transparent),
-    linear-gradient(135deg, color-mix(in srgb, var(--surface) 80%, transparent), color-mix(in srgb, var(--surface) 55%, transparent));
+    linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.25)),
+    url("../img/pro_portrait_01.jpeg");
+  background-size: cover;
+  background-position: center;
   box-shadow: var(--shadow);
   border: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
 }
@@ -224,6 +255,7 @@ body {
 
 .project-media {
   height: 190px;
+  background-image: url('../img/project_001.png');
   background-size: cover;
   background-position: center;
 }
@@ -472,4 +504,114 @@ body {
   .section-title { font-size: 1.6rem; }
   .hero-subtitle { font-size: 1rem; }
   .footer-bottom { flex-direction: column; }
+}
+
+/* Smooth scroll */
+html { scroll-behavior: smooth; }
+
+/* Reveal animation */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+
+[data-animate].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hover polish */
+.project-card, .service-card, .skill-card, .resume-card, .contact-card, .startup-card {
+  transition: transform 250ms ease, box-shadow 250ms ease;
+}
+
+.project-card:hover, .service-card:hover, .skill-card:hover, .resume-card:hover, .contact-card:hover, .startup-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 70px rgba(0,0,0,0.18);
+}
+
+/* Focus visible (accessibilité) */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+/* Réduction d’animations si l’utilisateur le demande */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  [data-animate] { transition: none; }
+  .project-card, .service-card, .skill-card, .resume-card, .contact-card, .startup-card {
+    transition: none;
+  }
+}
+
+// 
+/* Typo fluide */
+.display-4 {
+  font-size: clamp(2rem, 3.6vw + 1rem, 3.5rem);
+}
+
+.section-title {
+  font-size: clamp(1.5rem, 2.2vw + 1rem, 2.6rem);
+}
+
+.hero-subtitle {
+  max-width: 720px;
+}
+
+/* Scroll offset pour éviter que la navbar cache les sections */
+section {
+  scroll-margin-top: 90px;
+}
+
+/* Navbar mobile */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    margin-top: 12px;
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 12px 16px;
+    border: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
+  }
+
+  .navbar-nav .nav-link {
+    padding: 8px 0;
+  }
+}
+
+/* Boutons full width en très petit écran */
+@media (max-width: 575.98px) {
+  .hero-wrap .btn {
+    width: 100%;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+  }
+
+  section {
+    scroll-margin-top: 70px;
+  }
+}
+
+/* Ajustements sur cartes et KPIs */
+@media (max-width: 767.98px) {
+  .kpi-card {
+    padding: 10px;
+  }
+  .project-media {
+    height: 160px;
+  }
+}
+
+// contact-link
+.contact-link {
+  text-decoration: none;
+  color: var(--text);
+  transition: color 200ms ease;
+}
+
+.contact-link:hover {
+  color: var(--brand);
 }

@@ -264,6 +264,7 @@ const translations = {
     "contact.infoTitle": "Contact information",
     "contact.infoEmail": "Email",
     "contact.infoLocation": "Location",
+    "contact.whatsapp": "WhatsApp/fabergroupe",
     "contact.quickTitle": "Quick response",
     "contact.quickText":
       "I usually reply within 24 hours. For urgent requests, mention it in your message.",
@@ -318,3 +319,73 @@ themeToggle?.addEventListener("click", () =>
 
 setLang(currentLang);
 setTheme(currentTheme);
+
+
+// 
+const animatedEls = document.querySelectorAll("[data-animate]");
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.2 }
+);
+
+animatedEls.forEach(el => observer.observe(el));
+
+// 
+const navCollapse = document.querySelector("#mainNav");
+const navLinks = document.querySelectorAll("#mainNav .nav-link");
+const navToggle = document.querySelector("[data-nav-toggle]");
+
+if (navCollapse && navToggle) {
+  const bsCollapse = bootstrap.Collapse.getOrCreateInstance(navCollapse, {
+    toggle: false,
+  });
+
+  const setExpanded = (isOpen) => {
+    navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  };
+
+  navToggle.addEventListener("click", (event) => {
+    event.preventDefault();
+    const isOpen = navCollapse.classList.contains("show");
+    if (isOpen) {
+      bsCollapse.hide();
+      setExpanded(false);
+    } else {
+      bsCollapse.show();
+      setExpanded(true);
+    }
+  });
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      if (navCollapse.classList.contains("show")) {
+        bsCollapse.hide();
+        setExpanded(false);
+      }
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!navCollapse.classList.contains("show")) return;
+    const target = event.target;
+    if (!navCollapse.contains(target) && !navToggle.contains(target)) {
+      bsCollapse.hide();
+      setExpanded(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && navCollapse.classList.contains("show")) {
+      bsCollapse.hide();
+      setExpanded(false);
+    }
+  });
+}

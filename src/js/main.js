@@ -42,28 +42,33 @@ const translations = {
     "skills.db.title": "Base de données",
     "skills.devops.title": "DevOps / Outils",
     "skills.also": "Également expérimenté avec",
-    "projects.p1.title": "Plateforme d’Analyse Entreprise",
+    "projects.p1.title": "Katalog — Annuaire électronique RDC",
     "projects.p1.desc":
-      "Plateforme SaaS d’analyse avec data en temps réel, reporting et collaboration.",
-    "projects.p2.title": "Générateur de Contenu IA",
+      "Plateforme d'annuaire électronique pour entreprises et professionnels en RDC.",
+    "projects.p2.title": "Hosanna Tabernacle — Diffusion des prédications",
     "projects.p2.desc":
-      "SaaS utilisant l’IA pour générer du contenu marketing multilingue et SEO‑friendly.",
-    "projects.p3.title": "Système de Gestion E‑commerce",
+      "Plateforme de diffusion en direct et en replay des prédications. En place depuis 2022.",
+    "projects.p3.title": "E‑School Kinshasa — Digitalisation des écoles",
     "projects.p3.desc":
-      "Solution e‑commerce complète avec stocks, paiements et analytics client.",
-    "projects.live": "Démo en direct",
-    "projects.code": "Code",
+      "SaaS e‑school pour la digitalisation des écoles kinoises. Projet en cours.",
+    "projects.statusDev": "En développement",
+    "projects.statusLive": "En ligne",
+    "projects.statusProgress": "En cours",
+    "projects.dev": "En développement",
+    "projects.visit": "Visiter",
+    "projects.private": "Privé",
+    "projects.progress": "En cours",
     "projects.viewAll": "Voir tous les projets",
-    "startup.badgeActive": "Actif",
-    "startup.badgeBeta": "Bêta",
-    "startup.s1.title": "TaskFlow Pro",
-    "startup.s1.subtitle": "Gestion de projet réinventée",
+    "startup.badgeActive": "En développement",
+    "startup.badgeBeta": "En cours",
+    "startup.s1.title": "Katalog",
+    "startup.s1.subtitle": "Annuaire électronique RDC",
     "startup.s1.desc":
-      "Plateforme SaaS moderne pour équipes distantes avec collaboration temps réel et automatisations.",
-    "startup.s2.title": "DevDocs Hub",
-    "startup.s2.subtitle": "Documentation simplifiée",
+      "Plateforme d'annuaire électronique pour les entreprises et professionnels en RDC.",
+    "startup.s2.title": "E‑School Kinshasa",
+    "startup.s2.subtitle": "Digitalisation des écoles",
     "startup.s2.desc":
-      "Plateforme de documentation pour développeurs avec contrôle de version et collaboration.",
+      "SaaS e‑school pour la digitalisation des écoles kinoises. Projet en cours.",
     "startup.kpiUsers": "Utilisateurs actifs",
     "startup.kpiGrowth": "Croissance mensuelle",
     "startup.kpiMrr": "MRR",
@@ -176,29 +181,34 @@ const translations = {
     "skills.db.title": "Database",
     "skills.devops.title": "DevOps / Tools",
     "skills.also": "Also experienced with",
-    "projects.p1.title": "Enterprise Analytics Platform",
+    "projects.p1.title": "Katalog — RDC Electronic Directory",
     "projects.p1.desc":
-      "SaaS analytics platform with real‑time data, reporting, and collaboration.",
-    "projects.p2.title": "AI‑Powered Content Generator",
+      "Electronic directory platform for businesses and professionals in the DRC.",
+    "projects.p2.title": "Hosanna Tabernacle — Sermon Streaming",
     "projects.p2.desc":
-      "SaaS using AI to generate multilingual, SEO‑friendly marketing content.",
-    "projects.p3.title": "E‑commerce Management System",
+      "Live and replay sermon streaming platform. Running since 2022.",
+    "projects.p3.title": "E‑School Kinshasa — School Digitalization",
     "projects.p3.desc":
-      "Complete e‑commerce solution with inventory, payments, and customer analytics.",
-    "projects.live": "Live Demo",
-    "projects.code": "Code",
+      "E‑school SaaS to digitalize Kinshasa schools. In progress.",
+    "projects.statusDev": "In development",
+    "projects.statusLive": "Live",
+    "projects.statusProgress": "In progress",
+    "projects.dev": "In development",
+    "projects.visit": "Visit",
+    "projects.private": "Private",
+    "projects.progress": "In progress",
     "projects.viewAll": "View All Projects",
 
-    "startup.badgeActive": "Active",
-    "startup.badgeBeta": "Beta",
-    "startup.s1.title": "TaskFlow Pro",
-    "startup.s1.subtitle": "Project Management Reimagined",
+    "startup.badgeActive": "In development",
+    "startup.badgeBeta": "In progress",
+    "startup.s1.title": "Katalog",
+    "startup.s1.subtitle": "RDC electronic directory",
     "startup.s1.desc":
-      "Modern SaaS platform for remote teams with real‑time collaboration and automation.",
-    "startup.s2.title": "DevDocs Hub",
-    "startup.s2.subtitle": "Documentation Made Simple",
+      "Electronic directory platform for businesses and professionals in the DRC.",
+    "startup.s2.title": "E‑School Kinshasa",
+    "startup.s2.subtitle": "School digitalization",
     "startup.s2.desc":
-      "Developer documentation platform with version control and collaboration.",
+      "E‑school SaaS for digitalizing Kinshasa schools. In progress.",
     "startup.kpiUsers": "Active users",
     "startup.kpiGrowth": "Monthly growth",
     "startup.kpiMrr": "MRR",
@@ -277,6 +287,12 @@ const translations = {
 const langToggle = document.querySelector("[data-lang-toggle]");
 const themeToggle = document.querySelector("[data-theme-toggle]");
 const i18nEls = document.querySelectorAll("[data-i18n]");
+const cvLink = document.querySelector("[data-cv-link]");
+
+const cvFiles = {
+  fr: "./docs/CV_Bernard-Junior_Beya_FR.pdf",
+  en: "./docs/Cv – Bernard‑junior Beya – EN.pdf",
+};
 
 let currentLang =
   localStorage.getItem("siteLang") ||
@@ -296,6 +312,14 @@ function setLang(lang) {
     const key = el.dataset.i18n;
     if (translations[lang][key]) el.textContent = translations[lang][key];
   });
+  if (cvLink && cvFiles[lang]) {
+    const filePath = cvFiles[lang];
+    cvLink.setAttribute("href", encodeURI(filePath));
+    cvLink.setAttribute(
+      "download",
+      lang === "fr" ? "CV_Bernard-Junior_Beya_FR.pdf" : "CV_Bernard-Junior_Beya_EN.pdf",
+    );
+  }
 }
 
 function setTheme(theme) {

@@ -1,4 +1,5 @@
 export default {
+  base: '/beya-bernard-junior-porfolio/',
   build: {
     outDir: 'dist'
   },

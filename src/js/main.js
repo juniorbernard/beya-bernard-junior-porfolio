@@ -303,8 +303,8 @@ const contactFields = {
 };
 
 const cvFiles = {
-  fr: "./docs/CV_Bernard-Junior_Beya_FR.pdf",
-  en: "./docs/Cv – Bernard‑junior Beya – EN.pdf",
+  fr: "./src/docs/CV_Bernard-Junior_Beya_FR.pdf",
+  en: "./src/docs/Cv – Bernard‑junior Beya – EN.pdf",
 };
 
 const contactConfig = {

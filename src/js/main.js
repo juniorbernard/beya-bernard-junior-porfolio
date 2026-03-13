@@ -131,6 +131,8 @@ const translations = {
     "contact.subject": "Sujet",
     "contact.message": "Message",
     "contact.send": "Envoyer le message",
+    "contact.sendWhatsapp": "Envoyer via WhatsApp",
+    "contact.sendEmail": "Envoyer par email",
     "contact.infoTitle": "Informations de contact",
     "contact.infoEmail": "Email",
     "contact.infoLocation": "Localisation",
@@ -271,6 +273,8 @@ const translations = {
     "contact.subject": "Subject",
     "contact.message": "Message",
     "contact.send": "Send message",
+    "contact.sendWhatsapp": "Send via WhatsApp",
+    "contact.sendEmail": "Send by email",
     "contact.infoTitle": "Contact information",
     "contact.infoEmail": "Email",
     "contact.infoLocation": "Location",
@@ -288,10 +292,41 @@ const langToggle = document.querySelector("[data-lang-toggle]");
 const themeToggle = document.querySelector("[data-theme-toggle]");
 const i18nEls = document.querySelectorAll("[data-i18n]");
 const cvLink = document.querySelector("[data-cv-link]");
+const contactForm = document.querySelector("[data-contact-form]");
+const sendWhatsappBtn = document.querySelector("[data-send-whatsapp]");
+const sendEmailBtn = document.querySelector("[data-send-email]");
+const contactFields = {
+  name: document.querySelector('[data-contact-field="name"]'),
+  email: document.querySelector('[data-contact-field="email"]'),
+  subject: document.querySelector('[data-contact-field="subject"]'),
+  message: document.querySelector('[data-contact-field="message"]'),
+};
 
 const cvFiles = {
   fr: "./docs/CV_Bernard-Junior_Beya_FR.pdf",
   en: "./docs/Cv – Bernard‑junior Beya – EN.pdf",
+};
+
+const contactConfig = {
+  whatsappNumber: "243821067566",
+  emailTo: "juniorbernardbeya@gmail.com",
+};
+
+const contactLabels = {
+  fr: {
+    name: "Nom",
+    email: "Email",
+    subject: "Sujet",
+    message: "Message",
+    defaultSubject: "Demande depuis le portfolio",
+  },
+  en: {
+    name: "Name",
+    email: "Email",
+    subject: "Subject",
+    message: "Message",
+    defaultSubject: "Inquiry from portfolio",
+  },
 };
 
 let currentLang =
@@ -413,3 +448,41 @@ if (navCollapse && navToggle) {
     }
   });
 }
+
+const getContactValue = (key) => contactFields[key]?.value?.trim() || "";
+
+const buildContactMessage = () => {
+  const labels = contactLabels[currentLang] || contactLabels.fr;
+  const name = getContactValue("name");
+  const email = getContactValue("email");
+  const subject = getContactValue("subject");
+  const message = getContactValue("message");
+
+  const body = [
+    `${labels.name}: ${name || "-"}`,
+    `${labels.email}: ${email || "-"}`,
+    `${labels.subject}: ${subject || "-"}`,
+    `${labels.message}: ${message || "-"}`,
+  ].join("\n");
+
+  return {
+    subject: subject || labels.defaultSubject,
+    body,
+  };
+};
+
+contactForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+});
+
+sendWhatsappBtn?.addEventListener("click", () => {
+  const { body } = buildContactMessage();
+  const url = `https://wa.me/${contactConfig.whatsappNumber}?text=${encodeURIComponent(body)}`;
+  window.open(url, "_blank", "noopener");
+});
+
+sendEmailBtn?.addEventListener("click", () => {
+  const { subject, body } = buildContactMessage();
+  const url = `mailto:${contactConfig.emailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.location.href = url;
+});

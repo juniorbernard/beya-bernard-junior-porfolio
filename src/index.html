@@ -657,28 +657,31 @@
                 <div class="row g-4">
                     <div class="col-lg-7">
                         <div class="contact-card">
-                            <form>
+                            <form data-contact-form>
                                 <div class="row g-3">
                                     <div class="col-md-6">
                                         <label class="form-label" data-i18n="contact.name">Nom</label>
-                                        <input type="text" class="form-control" placeholder="Junior Beya">
+                                        <input type="text" class="form-control" placeholder="Junior Beya" data-contact-field="name">
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label" data-i18n="contact.email">Email</label>
-                                        <input type="email" class="form-control" placeholder="juniorb@exemple.com">
+                                        <input type="email" class="form-control" placeholder="juniorb@exemple.com" data-contact-field="email">
                                     </div>
                                     <div class="col-12">
                                         <label class="form-label" data-i18n="contact.subject">Sujet</label>
-                                        <input type="text" class="form-control" placeholder="Demande de projet">
+                                        <input type="text" class="form-control" placeholder="Demande de projet" data-contact-field="subject">
                                     </div>
                                     <div class="col-12">
                                         <label class="form-label" data-i18n="contact.message">Message</label>
-                                        <textarea class="form-control" rows="4"
-                                            placeholder="Parlez‑moi de votre projet..."></textarea>
+                                        <textarea class="form-control" rows="4" placeholder="Parlez‑moi de votre projet..." data-contact-field="message"></textarea>
                                     </div>
                                     <div class="col-12">
-                                        <button type="submit" class="btn btn-brand w-100"
-                                            data-i18n="contact.send">Envoyer le message</button>
+                                                                                <div class="d-flex flex-wrap gap-2">
+                                            <button type="button" class="btn btn-brand flex-fill" data-send-whatsapp
+                                                data-i18n="contact.sendWhatsapp">Envoyer via WhatsApp</button>
+                                            <button type="button" class="btn btn-outline-brand flex-fill" data-send-email
+                                                data-i18n="contact.sendEmail">Envoyer par email</button>
+                                        </div>
                                     </div>
                                 </div>
                             </form>
@@ -794,3 +797,5 @@
 </body>
 
 </html>
+
+
